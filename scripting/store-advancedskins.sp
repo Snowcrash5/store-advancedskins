@@ -87,8 +87,8 @@ public OnLibraryAdded(const String:name[])
     }
 }
 
-//Called when a new client is connected.
-public void OnClientConnected(int client)
+//Called when a new client is put in server.
+public void OnClientPutInServer(int client)
 {
     //Refresh this clients skin cache
     Store_GetEquippedItemsByType(Store_GetClientAccountID(client), "skin", Store_GetClientLoadout(client), OnGetPlayerSkin, GetClientSerial(client));
@@ -219,7 +219,7 @@ public OnGetPlayerSkin(ids[], count, any:serial)
             
             if(!KvJumpToKey(playercachedinfo, steamid, true))
             {
-                continue;
+                return;
             }
     
     
@@ -281,6 +281,7 @@ public Store_ItemUseAction:OnEquip(client, itemId, bool:equipped)
     PrintToChat(client, "%s%t", STORE_PREFIX, "Equipped item apply next spawn");
     return Store_EquipItem;
 }
+
 
 
 
