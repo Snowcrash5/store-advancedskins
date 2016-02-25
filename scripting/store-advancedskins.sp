@@ -174,6 +174,27 @@ public OnGetPlayerSkin(ids[], count, any:serial)
         
     if (!IsClientInGame(client))
         return;
+        
+    //if count = 0 (no items found) reset skins
+    if(count == 0)
+    {
+        //set cached model info
+        new String:steamid[64];
+        GetClientAuthId(client, AuthId_Engine, steamid, true);
+            
+        if(!KvJumpToKey(playercachedinfo, steamid, true))
+        {
+            return;
+        }
+    
+    
+        KvSetString(playercachedinfo, "ModelPath", "");
+        KvSetString(playercachedinfo, "ArmsPath", "");
+   
+        KvRewind(playercachedinfo);
+        
+        return;
+    }
     
     //Code that I did not write, props to alongub and his skins plugin which ive mostly based my own on it.
     new team = GetClientTeam(client);
@@ -281,6 +302,7 @@ public Store_ItemUseAction:OnEquip(client, itemId, bool:equipped)
     PrintToChat(client, "%s%t", STORE_PREFIX, "Equipped item apply next spawn");
     return Store_EquipItem;
 }
+
 
 
 
