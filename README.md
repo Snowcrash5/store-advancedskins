@@ -3,7 +3,8 @@ store-advancedskins
 
 ### Description
 This is a sourcemod Store module that is based on Alon Gubkin's [skin plugin](https://forums.alliedmods.net/showthread.php?t=208129).
-Its main improvement's over Alon's plugin is that it also supports custom first person arms models.
+
+This plugin's main improvement's over Alon's plugin is that it also supports custom first person arms models.
 
 ### Requirements
 
@@ -16,7 +17,7 @@ Download the zip file from the thread, or press Download Zip in this github page
 
 ### How to add skins?
 
-On your webpanel, add a new item with the type and loadout_slot as "skin", without the "". The attributes field is what matters, here is an example:
+On your webpanel, add a new item with the type and loadout_slot as "skin", without the " ". The attributes field is what matters, here is an example:
 
 	{
 		"model": "models/player/custom_player/kuristaja/deadpool/deadpool.mdl",
